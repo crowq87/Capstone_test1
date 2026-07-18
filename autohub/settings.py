@@ -9,6 +9,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+print("SETTINGS FILE:", __file__)
+print("WORKING DIRECTORY:", os.getcwd())
+
 cloudinary.config(
     cloud_name=config('CLOUDINARY_CLOUD_NAME'),
     api_key=config('CLOUDINARY_API_KEY'),
@@ -72,6 +75,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'autohub.wsgi.application'
 
+print("========== SETTINGS LOADED ==========")
+print("Settings file:", __file__)
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -85,6 +91,23 @@ DATABASES = {
         },
     }
 }
+
+print(DATABASES)
+print("====================================")
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": config("DB_NAME", default="NOT FOUND"),
+#         "USER": config("DB_USER", default="NOT FOUND"),
+#         "PASSWORD": config("DB_PASSWORD", default="NOT FOUND"),
+#         "HOST": config("DB_HOST", default="NOT FOUND"),
+#         "PORT": config("DB_PORT", default="NOT FOUND"),
+#         "OPTIONS": {
+#             "sslmode": "require",
+#         },
+#     }
+# }
 
 print("========== RENDER DEBUG ==========")
 print("DB_NAME:", os.getenv("DB_NAME"))
