@@ -86,13 +86,13 @@ DATABASES = {
     }
 }
 
-print("========== DEBUG ==========")
-print("DB_NAME:", config("DB_NAME", default="NOT FOUND"))
-print("DB_USER:", config("DB_USER", default="NOT FOUND"))
-print("DB_PASSWORD:", "***" if config("DB_PASSWORD", default="") else "NOT FOUND")
-print("DB_HOST:", config("DB_HOST", default="NOT FOUND"))
-print("DB_PORT:", config("DB_PORT", default="NOT FOUND"))
-print("===========================")
+print("========== RENDER DEBUG ==========")
+print("DB_NAME:", os.getenv("DB_NAME"))
+print("DB_USER:", os.getenv("DB_USER"))
+print("DB_HOST:", os.getenv("DB_HOST"))
+print("DB_PORT:", os.getenv("DB_PORT"))
+print("DB_PASSWORD:", "***" if os.getenv("DB_PASSWORD") else "MISSING")
+print("==================================")
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
