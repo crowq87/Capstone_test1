@@ -73,12 +73,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'autohub.wsgi.application'
 
 DATABASES = {
-    "default": dj_database_url.config(
-        default=config("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True,
-    )
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("DB_NAME", default="NOT FOUND"),
+        "USER": config("DB_USER", default="NOT FOUND"),
+        "PASSWORD": config("DB_PASSWORD", default="NOT FOUND"),
+        "HOST": config("DB_HOST", default="NOT FOUND"),
+        "PORT": config("DB_PORT", default="NOT FOUND"),
+        "OPTIONS": {
+            "sslmode": "require",
+        },
+    }
 }
+
+print("========== DEBUG ==========")
+print("DB_NAME:", config("DB_NAME", default="NOT FOUND"))
+print("DB_USER:", config("DB_USER", default="NOT FOUND"))
+print("DB_PASSWORD:", "***" if config("DB_PASSWORD", default="") else "NOT FOUND")
+print("DB_HOST:", config("DB_HOST", default="NOT FOUND"))
+print("DB_PORT:", config("DB_PORT", default="NOT FOUND"))
+print("===========================")
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
