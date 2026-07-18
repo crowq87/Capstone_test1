@@ -29,4 +29,5 @@ urlpatterns = [
     path('admin-panel/users/', views.admin_users, name='admin_users'),
     path('admin-panel/listings/<int:pk>/approve/', views.admin_approve_listing, name='admin_approve_listing'),
     path('admin-panel/listings/<int:pk>/remove/', views.admin_remove_listing, name='admin_remove_listing'),
+
 ]
